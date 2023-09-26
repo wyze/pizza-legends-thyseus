@@ -9,4 +9,8 @@ export class Vector2 {
     this.x = x
     this.y = y
   }
+
+  get values() {
+    return [this.x, this.y] as const
+  }
 }

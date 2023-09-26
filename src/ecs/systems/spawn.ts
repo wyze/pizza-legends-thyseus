@@ -4,43 +4,53 @@ import hero from '../../images/characters/people/hero.png'
 import npc1 from '../../images/characters/people/npc1.png'
 import shadowImage from '../../images/characters/shadow.png'
 import demoLower from '../../images/maps/DemoLower.png'
+import demoUpper from '../../images/maps/DemoUpper.png'
+import { Grid } from '../components/grid'
 import { HasShadow } from '../components/has-shadow'
 import { Image } from '../components/image'
+import { IsPerson } from '../components/is-person'
+import { Map } from '../components/map'
+import { Moving } from '../components/moving'
+import { Offset } from '../components/offset'
 import { Position } from '../components/position'
-import { Sprite } from '../components/sprite'
-import { Vector2 } from '../components/vector-2'
 import { Shadow } from '../resources/shadow'
 
 export async function spawnSystem(commands: Commands, shadow: Res<Shadow>) {
   // Shadow resource
   await shadow.update(shadowImage).load()
 
-  // Map
-  commands.spawn().addType(Position).add(new Image(demoLower))
+  // Lower Map
+  commands
+    .spawn()
+    .addType(Position)
+    .add(Map.lower())
+    .add(await new Image(demoLower).load())
+
+  // Upper Map
+  commands
+    .spawn()
+    .addType(Position)
+    .add(Map.upper())
+    .add(await new Image(demoUpper).load())
 
   // Hero
   commands
     .spawn()
+    .addType(Grid)
     .addType(HasShadow)
-    .add(
-      new Sprite({
-        grid: 16,
-        image: new Image(hero),
-        offset: new Vector2(8, 18),
-        position: new Position(5, 6),
-      }),
-    )
+    .addType(IsPerson)
+    .add(await new Image(hero).load())
+    .add(new Offset(-8, -18))
+    .add(new Position(5, 6))
+    .add(new Moving('down', 16))
 
   // Npc1
   commands
     .spawn()
+    .addType(Grid)
     .addType(HasShadow)
-    .add(
-      new Sprite({
-        grid: 16,
-        image: new Image(npc1),
-        offset: new Vector2(8, 18),
-        position: new Position(7, 9),
-      }),
-    )
+    .addType(IsPerson)
+    .add(await new Image(npc1).load())
+    .add(new Offset(-8, -18))
+    .add(new Position(7, 9))
 }

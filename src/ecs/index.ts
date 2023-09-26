@@ -1,23 +1,25 @@
 import { StartSchedule, World, applyCommands } from 'thyseus'
 
 import { clearCanvasSystem } from './systems/clear-canvas'
+import { consumeGridSystem } from './systems/consume-grid'
 import { gameLoopSystem } from './systems/game-loop'
-import { loadImageSystem } from './systems/load-image'
-import { loadSpriteSystem } from './systems/load-sprite'
-import { renderImageSystem } from './systems/render-image'
-import { renderShadowSystem } from './systems/render-shadow'
-import { renderSpriteSystem } from './systems/render-sprite'
+import { movementSystem } from './systems/movement'
+import {
+  renderLowerMapSystem,
+  renderUpperMapSystem,
+} from './systems/render-map'
+import { renderPersonSystem } from './systems/render-person'
 import { spawnSystem } from './systems/spawn'
 
 export const world = await World.new()
-  .addSystemsToSchedule(StartSchedule, gameLoopSystem, spawnSystem)
+  .addSystemsToSchedule(StartSchedule, spawnSystem, gameLoopSystem)
   .addSystems(
-    loadImageSystem,
-    loadSpriteSystem,
+    consumeGridSystem,
+    movementSystem,
     clearCanvasSystem,
-    renderImageSystem,
-    renderShadowSystem,
-    renderSpriteSystem,
+    renderLowerMapSystem,
+    renderPersonSystem,
+    renderUpperMapSystem,
     applyCommands,
   )
   .build()

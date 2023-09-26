@@ -5,26 +5,26 @@ import { warehouse } from '../../lib/warehouse'
 
 @struct
 export class Image {
-  #source: string
+  #source: string = ''
   #warehouseId: u8 = 0
 
-  constructor(source: string = '') {
+  constructor(source = '') {
     this.#source = source
   }
 
   async load() {
     this.#warehouseId = warehouse.store(await loader.image(this.#source))
+
+    return this
   }
 
   get image() {
     return warehouse.get<HTMLImageElement>(this.#warehouseId)
   }
 
-  get loaded() {
-    return this.#warehouseId > 0
-  }
-
-  protected update(source: string) {
+  update(source: string) {
     this.#source = source
+
+    return this
   }
 }
