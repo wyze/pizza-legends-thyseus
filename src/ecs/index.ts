@@ -1,7 +1,7 @@
 import { StartSchedule, World, applyCommands } from 'thyseus'
 
+import { applyGridSystem } from './systems/apply-grid'
 import { clearCanvasSystem } from './systems/clear-canvas'
-import { consumeGridSystem } from './systems/consume-grid'
 import { gameLoopSystem } from './systems/game-loop'
 import { movementSystem } from './systems/movement'
 import {
@@ -12,9 +12,14 @@ import { renderPersonSystem } from './systems/render-person'
 import { spawnSystem } from './systems/spawn'
 
 export const world = await World.new()
-  .addSystemsToSchedule(StartSchedule, spawnSystem, gameLoopSystem)
+  .addSystemsToSchedule(
+    StartSchedule,
+    spawnSystem,
+    applyCommands,
+    applyGridSystem,
+    gameLoopSystem,
+  )
   .addSystems(
-    consumeGridSystem,
     movementSystem,
     clearCanvasSystem,
     renderLowerMapSystem,

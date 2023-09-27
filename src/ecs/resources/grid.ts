@@ -1,4 +1,4 @@
-import { struct, u8 } from 'thyseus'
+import { struct, type u8 } from 'thyseus'
 
 @struct
 export class Grid {
