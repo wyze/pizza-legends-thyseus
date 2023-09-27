@@ -1,4 +1,4 @@
-import { Commands, Entity, type Mut, type Query } from 'thyseus'
+import { type Commands, Entity, type Mut, type Query } from 'thyseus'
 
 import { Moving } from '../components/moving'
 import { Position } from '../components/position'
@@ -8,7 +8,7 @@ export function movementSystem(
   commands: Commands,
 ) {
   for (const [entity, moving, position] of query) {
-    if (moving.tiles === 0) {
+    if (moving.remaining === 0) {
       commands.get(entity).remove(Moving)
 
       continue
@@ -33,6 +33,6 @@ export function movementSystem(
         break
     }
 
-    moving.tiles--
+    moving.remaining--
   }
 }
