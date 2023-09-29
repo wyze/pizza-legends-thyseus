@@ -9,10 +9,10 @@ import { HasShadow } from '../components/has-shadow'
 import { Image } from '../components/image'
 import { IsPerson } from '../components/is-person'
 import { Map } from '../components/map'
-import { Moving } from '../components/moving'
 import { Offset } from '../components/offset'
 import { Position } from '../components/position'
 import { UsesGrid } from '../components/uses-grid'
+import { UsesKeyboard } from '../components/uses-keyboard'
 import { Shadow } from '../resources/shadow'
 
 export async function spawnSystem(commands: Commands, shadow: Res<Shadow>) {
@@ -39,10 +39,10 @@ export async function spawnSystem(commands: Commands, shadow: Res<Shadow>) {
     .addType(HasShadow)
     .addType(IsPerson)
     .addType(UsesGrid)
+    .addType(UsesKeyboard)
     .add(await new Image(hero).load())
     .add(new Offset(-8, -18))
     .add(new Position(5, 6))
-    .add(new Moving('down', 16))
 
   // Npc1
   commands
