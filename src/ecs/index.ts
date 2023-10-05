@@ -10,6 +10,7 @@ import {
   renderUpperMapSystem,
 } from './systems/render-map'
 import { renderPersonSystem } from './systems/render-person'
+import { renderShadowSystem } from './systems/render-shadow'
 import { spawnSystem } from './systems/spawn'
 import { spriteSystem } from './systems/sprite'
 
@@ -28,6 +29,7 @@ export const world = await World.new()
     movementSystem,
     clearCanvasSystem,
     renderLowerMapSystem,
+    renderShadowSystem,
     renderPersonSystem,
     renderUpperMapSystem,
     applyCommands,
