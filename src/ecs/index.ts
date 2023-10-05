@@ -11,6 +11,7 @@ import {
 } from './systems/render-map'
 import { renderPersonSystem } from './systems/render-person'
 import { spawnSystem } from './systems/spawn'
+import { spriteSystem } from './systems/sprite'
 
 export const world = await World.new()
   .addSystemsToSchedule(
@@ -23,6 +24,7 @@ export const world = await World.new()
   .addSystems(
     updateKeyboardSystem,
     keyboardSystem,
+    spriteSystem,
     movementSystem,
     clearCanvasSystem,
     renderLowerMapSystem,

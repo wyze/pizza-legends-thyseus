@@ -6,14 +6,15 @@ import { Image } from '../components/image'
 import { IsPerson } from '../components/is-person'
 import { Offset } from '../components/offset'
 import { Position } from '../components/position'
+import { Sprite } from '../components/sprite'
 import { Shadow } from '../resources/shadow'
 
 export function renderPersonSystem(
-  personQuery: Query<[Entity, Image, Offset, Position], With<IsPerson>>,
+  personQuery: Query<[Entity, Image, Offset, Position, Sprite], With<IsPerson>>,
   shadowQuery: Query<Entity, With<HasShadow>>,
   shadow: Res<Shadow>,
 ) {
-  for (const [entity, image, offset, position] of personQuery) {
+  for (const [entity, image, offset, position, sprite] of personQuery) {
     const x = position.x + offset.x
     const y = position.y + offset.y
 
@@ -25,16 +26,18 @@ export function renderPersonSystem(
       context.drawImage(shadow.image, x, y)
     }
 
+    const [frameX, frameY] = sprite.frame
+
     context.drawImage(
       image.image,
-      0, // Left Cut
-      0, // Top Cut
-      32, // Cut width
-      32, // Cut Height
+      frameX, // Left Cut
+      frameY, // Top Cut
+      Sprite.pixels, // Cut width
+      Sprite.pixels, // Cut Height
       x,
       y,
-      32, // Draw Width
-      32, // Draw Height
+      Sprite.pixels, // Draw Width
+      Sprite.pixels, // Draw Height
     )
   }
 }
