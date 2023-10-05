@@ -1,8 +1,7 @@
-import type { Commands, Res } from 'thyseus'
+import type { Commands } from 'thyseus'
 
 import hero from '../../images/characters/people/hero.png'
 import npc1 from '../../images/characters/people/npc1.png'
-import shadowImage from '../../images/characters/shadow.png'
 import demoLower from '../../images/maps/DemoLower.png'
 import demoUpper from '../../images/maps/DemoUpper.png'
 import { animations } from '../../lib/constants'
@@ -15,25 +14,21 @@ import { Position } from '../components/position'
 import { Sprite } from '../components/sprite'
 import { UsesGrid } from '../components/uses-grid'
 import { UsesKeyboard } from '../components/uses-keyboard'
-import { Shadow } from '../resources/shadow'
 
-export async function spawnSystem(commands: Commands, shadow: Res<Shadow>) {
-  // Shadow resource
-  await shadow.update(shadowImage).load()
-
+export async function spawnSystem(commands: Commands) {
   // Lower Map
   commands
     .spawn()
     .addType(Position)
-    .add(Map.lower())
-    .add(await new Image(demoLower).load())
+    .add(Map.from('lower'))
+    .add(await Image.from(demoLower))
 
   // Upper Map
   commands
     .spawn()
     .addType(Position)
-    .add(Map.upper())
-    .add(await new Image(demoUpper).load())
+    .add(Map.from('upper'))
+    .add(await Image.from(demoUpper))
 
   // Hero
   commands
@@ -42,10 +37,10 @@ export async function spawnSystem(commands: Commands, shadow: Res<Shadow>) {
     .addType(IsPerson)
     .addType(UsesGrid)
     .addType(UsesKeyboard)
-    .add(await new Image(hero).load())
-    .add(new Offset(-8, -18))
-    .add(new Position(5, 6))
-    .add(Sprite.withMatrix(animations.down.idle))
+    .add(await Image.from(hero))
+    .add(Offset.from(-8, -18))
+    .add(Position.from(5, 6))
+    .add(Sprite.from(animations.down.idle))
 
   // Npc1
   commands
@@ -53,8 +48,8 @@ export async function spawnSystem(commands: Commands, shadow: Res<Shadow>) {
     .addType(HasShadow)
     .addType(IsPerson)
     .addType(UsesGrid)
-    .add(await new Image(npc1).load())
-    .add(new Offset(-8, -18))
-    .add(new Position(7, 9))
-    .add(Sprite.withMatrix(animations.down.idle))
+    .add(await Image.from(npc1))
+    .add(Offset.from(-8, -18))
+    .add(Position.from(7, 9))
+    .add(Sprite.from(animations.down.idle))
 }

@@ -1,5 +1,7 @@
 import { struct, type u8 } from 'thyseus'
 
+import { Grid } from '../resources/grid'
+
 type Direction = 'down' | 'left' | 'right' | 'up'
 
 @struct
@@ -7,9 +9,13 @@ export class Moving {
   #direction: string = 'down'
   remaining: u8 = 0
 
-  constructor(direction: Direction = 'down', remaining = 0) {
-    this.#direction = direction
-    this.remaining = remaining
+  static from(direction: Direction) {
+    const moving = new this()
+
+    moving.#direction = direction
+    moving.remaining = Grid.size
+
+    return moving
   }
 
   get direction() {

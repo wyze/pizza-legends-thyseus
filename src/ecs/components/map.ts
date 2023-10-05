@@ -1,32 +1,20 @@
 import { struct } from 'thyseus'
 
-enum Order {
-  Initial,
-  Lower,
-  Upper,
-}
+type Order = 'lower' | 'upper'
 
 @struct
 export class Map {
-  #order: Order
+  #order: string = ''
 
-  constructor(order = Order.Initial) {
-    this.#order = order
+  static from(order: Order) {
+    const map = new this()
+
+    map.#order = order
+
+    return map
   }
 
-  static lower() {
-    return new Map(Order.Lower)
-  }
-
-  static upper() {
-    return new Map(Order.Upper)
-  }
-
-  isLower() {
-    return this.#order === Order.Lower
-  }
-
-  isUpper() {
-    return this.#order === Order.Upper
+  get order() {
+    return this.#order as Order
   }
 }

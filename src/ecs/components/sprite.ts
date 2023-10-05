@@ -8,33 +8,39 @@ export class Sprite {
   static speed: u8 = 8
   static pixels: u8 = 32
 
+  // Private fields
+  #length: u8 = 0
+  #mx: u8[] = []
+  #my: u8[] = []
+
   current: u8 = 0
-  frames: u8 = 0
-  mx: u8[] = []
-  my: u8[] = []
   progress: u8 = Sprite.speed
 
-  static withMatrix(matrix: Matrix) {
+  static from(matrix: Matrix) {
     const sprite = new this()
 
-    sprite.frames = matrix.length
-    sprite.mx = matrix.map(([x]) => x)
-    sprite.my = matrix.map(([, y]) => y)
+    sprite.#length = matrix.length
+    sprite.#mx = matrix.map(([x]) => x)
+    sprite.#my = matrix.map(([, y]) => y)
 
     return sprite
   }
 
   get frame() {
-    const x = this.mx[this.current]
-    const y = this.my[this.current]
+    const x = this.#mx[this.current]
+    const y = this.#my[this.current]
 
     return [x * Sprite.pixels, y * Sprite.pixels]
   }
 
+  get length() {
+    return this.#length
+  }
+
   set matrix(matrix: Matrix) {
-    this.frames = matrix.length
-    this.mx = matrix.map(([x]) => x)
-    this.my = matrix.map(([, y]) => y)
+    this.#length = matrix.length
+    this.#mx = matrix.map(([x]) => x)
+    this.#my = matrix.map(([, y]) => y)
 
     // Reset since animation switched
     this.current = 0

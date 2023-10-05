@@ -16,7 +16,7 @@ export function renderPersonSystem(
     const [frameX, frameY] = sprite.frame
 
     context.drawImage(
-      image.image,
+      image.value,
       frameX, // Left Cut
       frameY, // Top Cut
       Sprite.pixels, // Cut width

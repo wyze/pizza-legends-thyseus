@@ -42,7 +42,7 @@ export function keyboardSystem(
     }
 
     if (keyboard.direction) {
-      commands.get(entity).add(new Moving(keyboard.direction, grid.size))
+      commands.get(entity).add(Moving.from(keyboard.direction))
 
       sprite.matrix = animations[keyboard.direction].walk
     }

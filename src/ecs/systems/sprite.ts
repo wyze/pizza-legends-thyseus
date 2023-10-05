@@ -10,7 +10,7 @@ export function spriteSystem(query: Query<Mut<Sprite>>) {
       sprite.progress = Sprite.speed
       sprite.current++
 
-      if (sprite.current === sprite.frames) {
+      if (sprite.current === sprite.length) {
         sprite.current = 0
       }
     }
