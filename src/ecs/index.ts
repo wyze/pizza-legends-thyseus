@@ -2,8 +2,9 @@ import { StartSchedule, World, applyCommands } from 'thyseus'
 
 import { applyGridSystem } from './systems/apply-grid'
 import { clearCanvasSystem } from './systems/clear-canvas'
+import { documentListenersSystem } from './systems/document-listeners'
 import { gameLoopSystem } from './systems/game-loop'
-import { keyboardSystem, updateKeyboardSystem } from './systems/keyboard'
+import { keyboardSystem } from './systems/keyboard'
 import { movementSystem } from './systems/movement'
 import {
   renderLowerMapSystem,
@@ -20,10 +21,10 @@ export const world = await World.new()
     spawnSystem,
     applyCommands,
     applyGridSystem,
+    documentListenersSystem,
     gameLoopSystem,
   )
   .addSystems(
-    updateKeyboardSystem,
     keyboardSystem,
     spriteSystem,
     movementSystem,
