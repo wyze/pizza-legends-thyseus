@@ -7,6 +7,7 @@ import demoUpper from '../../images/maps/DemoUpper.png'
 import { animations } from '../../lib/constants'
 import { HasShadow } from '../components/has-shadow'
 import { Image } from '../components/image'
+import { IsCamera } from '../components/is-camera'
 import { IsPerson } from '../components/is-person'
 import { Map } from '../components/map'
 import { Offset } from '../components/offset'
@@ -34,6 +35,7 @@ export async function spawnSystem(commands: Commands) {
   commands
     .spawn()
     .addType(HasShadow)
+    .addType(IsCamera)
     .addType(IsPerson)
     .addType(UsesGrid)
     .addType(UsesKeyboard)

@@ -1,6 +1,7 @@
 import { StartSchedule, World, applyCommands } from 'thyseus'
 
 import { applyGridSystem } from './systems/apply-grid'
+import { cameraSystem } from './systems/camera'
 import { clearCanvasSystem } from './systems/clear-canvas'
 import { documentListenersSystem } from './systems/document-listeners'
 import { gameLoopSystem } from './systems/game-loop'
@@ -25,6 +26,7 @@ export const world = await World.new()
     gameLoopSystem,
   )
   .addSystems(
+    cameraSystem,
     keyboardSystem,
     spriteSystem,
     movementSystem,

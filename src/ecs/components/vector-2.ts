@@ -8,8 +8,4 @@ export class Vector2 {
   static from(x: f64, y: f64): Vector2 {
     return Object.assign(new this(), { x, y })
   }
-
-  get values() {
-    return [this.x, this.y] as const
-  }
 }
