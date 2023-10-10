@@ -15,6 +15,7 @@ import { renderPersonSystem } from './systems/render-person'
 import { renderShadowSystem } from './systems/render-shadow'
 import { spawnSystem } from './systems/spawn'
 import { spriteSystem } from './systems/sprite'
+import { wallDebugSystem } from './systems/wall-debug'
 
 export const world = await World.new()
   .addSystemsToSchedule(
@@ -32,6 +33,7 @@ export const world = await World.new()
     movementSystem,
     clearCanvasSystem,
     renderLowerMapSystem,
+    wallDebugSystem,
     renderShadowSystem,
     renderPersonSystem,
     renderUpperMapSystem,

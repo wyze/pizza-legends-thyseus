@@ -15,7 +15,6 @@ export class Camera {
   }
 
   set x(x) {
-    console.log(x)
     this.#x = CENTER_X - x
   }
 
