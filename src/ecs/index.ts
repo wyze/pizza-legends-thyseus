@@ -17,6 +17,7 @@ import { renderPersonSystem } from './systems/render-person'
 import { renderShadowSystem } from './systems/render-shadow'
 import { spawnSystem } from './systems/spawn'
 import { spriteSystem } from './systems/sprite'
+import { standingSystem } from './systems/standing'
 import { timeStartSystem } from './systems/time'
 import { wallDebugSystem } from './systems/wall-debug'
 
@@ -30,6 +31,7 @@ export const world = await World.new()
     timeStartSystem,
     gameLoopSystem,
   )
+  .addSystemsToSchedule(schedules.FixedUpdate, standingSystem)
   .addSystems(
     cameraSystem,
     keyboardSystem,

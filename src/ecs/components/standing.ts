@@ -1,3 +1,3 @@
 import { Behavior } from '../shared/behavior'
 
-export class Moving extends Behavior {}
+export class Standing extends Behavior {}
