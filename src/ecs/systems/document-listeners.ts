@@ -1,9 +1,9 @@
 import { EventWriter } from 'thyseus'
 
-import { DirectionName } from '../../lib/types'
+import { Direction } from '../../lib/types'
 import { DirectionEvent } from '../events/direction'
 
-const directions: DirectionName[] = ['']
+const directions: Direction[] = []
 
 export function documentListenersSystem(
   directionEvents: EventWriter<DirectionEvent>,
@@ -28,7 +28,7 @@ export function documentListenersSystem(
       if (index > -1) {
         directions.splice(index, 1)
 
-        directionEvents.create(DirectionEvent.from(directions[0]))
+        directionEvents.create(DirectionEvent.from(directions[0] ?? ''))
       }
     }
   }
@@ -51,7 +51,5 @@ function getDirection(code: string) {
     case 'ArrowUp':
     case 'KeyW':
       return 'up'
-    default:
-      return ''
   }
 }

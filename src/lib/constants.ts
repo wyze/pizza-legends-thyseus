@@ -1,9 +1,6 @@
-import type { Matrix } from './types'
+import type { Direction, Matrix } from './types'
 
-type Animations = Record<
-  'down' | 'left' | 'right' | 'up',
-  Record<'idle' | 'walk', Matrix>
->
+type Animations = Record<Direction, Record<'idle' | 'walk', Matrix>>
 
 export const animations: Animations = {
   down: {

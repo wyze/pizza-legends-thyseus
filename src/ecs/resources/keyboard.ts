@@ -1,16 +1,16 @@
 import { struct } from 'thyseus'
 
-import { Direction } from '../components/direction'
+import type { Direction } from '../../lib/types'
 
 @struct
 export class Keyboard {
-  #direction: Direction = Direction.from('')
+  #direction: string = ''
 
   get direction() {
-    return this.#direction.value
+    return this.#direction as Direction
   }
 
   set direction(value) {
-    this.#direction.value = value
+    this.#direction = value
   }
 }
