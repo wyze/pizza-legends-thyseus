@@ -9,7 +9,7 @@ export function applyGridSystem(
   grid: Res<Grid>,
 ) {
   for (const position of query) {
-    position.x *= grid.size
-    position.y *= grid.size
+    position.x *= grid.pixels
+    position.y *= grid.pixels
   }
 }

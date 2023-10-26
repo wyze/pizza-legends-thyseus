@@ -2,7 +2,7 @@ import { struct, type u8 } from 'thyseus'
 
 @struct
 export class Grid {
-  static size: u8 = 16
+  static pixels: u8 = 16
 
-  size: u8 = Grid.size
+  pixels: u8 = Grid.pixels
 }

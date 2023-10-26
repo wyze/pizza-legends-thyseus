@@ -1,4 +1,4 @@
-import type { Query, Res, With } from 'thyseus'
+import { type Query, type Res, With } from 'thyseus'
 
 import { context } from '../../lib/canvas'
 import { IsWall } from '../components/is-wall'
@@ -19,8 +19,8 @@ export function wallDebugSystem(
     context.fillRect(
       position.x + camera.x,
       position.y + camera.y,
-      Grid.size,
-      Grid.size,
+      Grid.pixels,
+      Grid.pixels,
     )
   }
 }

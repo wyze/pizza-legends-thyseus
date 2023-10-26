@@ -58,7 +58,7 @@ export function keyboardSystem(
     handled[mover.index] = 'walk'
 
     if (moving.remaining === 0 && keyboard.direction) {
-      moving.remaining = grid.size
+      moving.remaining = grid.pixels
 
       if (keyboard.direction !== moving.direction) {
         moving.direction = keyboard.direction

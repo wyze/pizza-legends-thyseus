@@ -3,9 +3,9 @@ import { Grid } from '../ecs/resources/grid'
 
 export function nextPosition({ x, y }: Position) {
   return {
-    down: `${x},${y + Grid.size}`,
-    left: `${x - Grid.size},${y}`,
-    right: `${x + Grid.size},${y}`,
-    up: `${x},${y - Grid.size}`,
+    down: `${x},${y + Grid.pixels}`,
+    left: `${x - Grid.pixels},${y}`,
+    right: `${x + Grid.pixels},${y}`,
+    up: `${x},${y - Grid.pixels}`,
   }
 }

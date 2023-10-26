@@ -2,8 +2,8 @@ import { type f64, struct } from 'thyseus'
 
 import { Grid } from './grid'
 
-const CENTER_X = Grid.size * 10.5
-const CENTER_Y = Grid.size * 6
+const CENTER_X = Grid.pixels * 10.5
+const CENTER_Y = Grid.pixels * 6
 
 @struct
 export class Camera {
