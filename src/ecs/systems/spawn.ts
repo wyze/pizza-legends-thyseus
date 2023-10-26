@@ -2,6 +2,7 @@ import type { Commands } from 'thyseus'
 
 import hero from '../../images/characters/people/hero.png'
 import npc1 from '../../images/characters/people/npc1.png'
+import npc2 from '../../images/characters/people/npc2.png'
 import demoLower from '../../images/maps/DemoLower.png'
 import demoUpper from '../../images/maps/DemoUpper.png'
 import { animations, walls } from '../../lib/constants'
@@ -51,7 +52,7 @@ export async function spawnSystem(commands: Commands) {
     .add(Position.from(5, 6))
     .add(Sprite.from(animations.down.idle))
 
-  // Npc1
+  // NpcA
   commands
     .spawn()
     .addType(HasShadow)
@@ -61,5 +62,17 @@ export async function spawnSystem(commands: Commands) {
     .add(await Image.from(npc1))
     .add(Offset.from(-8, -18))
     .add(Position.from(7, 9))
+    .add(Sprite.from(animations.down.idle))
+
+  // NpcB
+  commands
+    .spawn()
+    .addType(HasShadow)
+    .addType(IsPerson)
+    .addType(IsWall)
+    .addType(UsesGrid)
+    .add(await Image.from(npc2))
+    .add(Offset.from(-8, -18))
+    .add(Position.from(3, 7))
     .add(Sprite.from(animations.down.idle))
 }
