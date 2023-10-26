@@ -44,6 +44,12 @@ export const animations: Animations = {
   },
 }
 
+export const FIXED_STEP_MS = 1000 / 60
+
+export const schedules = {
+  FixedUpdate: Symbol('FixedUpdate'),
+}
+
 export const walls = [
   [0, 4],
   [0, 5],
