@@ -1,7 +1,7 @@
 import { EventWriter } from 'thyseus'
 
 import { Direction } from '../../lib/types'
-import { DirectionEvent } from '../events/direction'
+import { DirectionEvent } from '../events/direction-event'
 
 const directions: Direction[] = []
 

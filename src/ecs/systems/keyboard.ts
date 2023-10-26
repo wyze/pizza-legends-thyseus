@@ -15,7 +15,7 @@ import { Moving } from '../components/moving'
 import { Position } from '../components/position'
 import { Sprite } from '../components/sprite'
 import { UsesKeyboard } from '../components/uses-keyboard'
-import { DirectionEvent } from '../events/direction'
+import { DirectionEvent } from '../events/direction-event'
 import { Grid } from '../resources/grid'
 import { Keyboard } from '../resources/keyboard'
 
@@ -33,7 +33,7 @@ export function keyboardSystem(
   const walls: Record<string, true> = {}
 
   for (const event of directionEvents) {
-    keyboard.direction = event.value
+    keyboard.direction = event.direction
   }
 
   directionEvents.clear()
