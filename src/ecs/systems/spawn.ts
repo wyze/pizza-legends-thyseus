@@ -6,6 +6,7 @@ import npc2 from '../../images/characters/people/npc2.png'
 import demoLower from '../../images/maps/DemoLower.png'
 import demoUpper from '../../images/maps/DemoUpper.png'
 import { animations, walls } from '../../lib/constants'
+import { BehaviorLoop } from '../components/behavior-loop'
 import { HasShadow } from '../components/has-shadow'
 import { Image } from '../components/image'
 import { IsCamera } from '../components/is-camera'
@@ -63,6 +64,14 @@ export async function spawnSystem(commands: Commands) {
     .add(Offset.from(-8, -18))
     .add(Position.from(7, 9))
     .add(Sprite.from(animations.down.idle))
+    .add(
+      BehaviorLoop.from([
+        { action: 'stand', direction: 'left', time: 800 },
+        { action: 'stand', direction: 'up', time: 800 },
+        { action: 'stand', direction: 'right', time: 1200 },
+        { action: 'stand', direction: 'up', time: 300 },
+      ]),
+    )
 
   // NpcB
   commands
@@ -75,4 +84,13 @@ export async function spawnSystem(commands: Commands) {
     .add(Offset.from(-8, -18))
     .add(Position.from(3, 7))
     .add(Sprite.from(animations.down.idle))
+    .add(
+      BehaviorLoop.from([
+        { action: 'walk', direction: 'left' },
+        { action: 'stand', direction: 'up', time: 800 },
+        { action: 'walk', direction: 'up' },
+        { action: 'walk', direction: 'right' },
+        { action: 'walk', direction: 'down' },
+      ]),
+    )
 }

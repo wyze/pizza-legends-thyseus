@@ -2,6 +2,7 @@ import { StartSchedule, World, applyCommands } from 'thyseus'
 
 import { schedules } from '../lib/constants'
 import { applyGridSystem } from './systems/apply-grid'
+import { behaviorSystem } from './systems/behavior'
 import { cameraSystem } from './systems/camera'
 import { clearCanvasSystem } from './systems/clear-canvas'
 import { documentListenersSystem } from './systems/document-listeners'
@@ -37,6 +38,7 @@ export const world = await World.new()
     keyboardSystem,
     spriteSystem,
     movementSystem,
+    behaviorSystem,
     fixedUpdateSystem,
     clearCanvasSystem,
     renderLowerMapSystem,
